@@ -1,3 +1,4 @@
+DROP TABLE product;
 CREATE TABLE product
 (
     id          INT PRIMARY KEY,

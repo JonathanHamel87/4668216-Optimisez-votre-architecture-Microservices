@@ -14,9 +14,11 @@ import java.util.Optional;
 
 @RestController
 public class CommandeController {
+    final CommandesDao commandesDao;
 
-    @Autowired
-    CommandesDao commandesDao;
+    public CommandeController(CommandesDao commandesDao) {
+        this.commandesDao = commandesDao;
+    }
 
     @PostMapping (value = "/commandes")
     public ResponseEntity<Commande> ajouterCommande(@RequestBody Commande commande){

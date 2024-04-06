@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PaiementController {
+    final PaiementDao paiementDao;
 
-    @Autowired
-    PaiementDao paiementDao;
+    public PaiementController(PaiementDao paiementDao) {
+        this.paiementDao = paiementDao;
+    }
 
     @PostMapping(value = "/paiement")
     public ResponseEntity<Paiement>  payerUneCommande(@RequestBody Paiement paiement){
@@ -33,7 +35,7 @@ public class PaiementController {
 
         //TODO Nous allons appeler le Microservice Commandes ici pour lui signifier que le paiement est accepté
 
-        return new ResponseEntity<Paiement>(nouveauPaiement, HttpStatus.CREATED);
+        return new ResponseEntity<>(nouveauPaiement, HttpStatus.CREATED);
 
     }
 
